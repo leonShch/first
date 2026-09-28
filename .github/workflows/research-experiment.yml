@@ -2,26 +2,15 @@ name: Research Experiment
 
 on:
   workflow_dispatch:
-    inputs:
-      experiment_id:
-        description: "Experiment ID"
-        required: true
-        type: string
-      branch:
-        description: "Experiment branch"
-        required: true
-        type: string
 
 jobs:
-  run-experiment:
+  experiment:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout experiment branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.branch }}
 
       - name: Run experiment
         run: |
-          python experiments/${{ inputs.experiment_id }}/run.py
+          python experiments/TEST-GITHUB-001/run.py
